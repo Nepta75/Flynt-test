@@ -1,0 +1,39 @@
+{
+    "name": "test-technique-api",
+    "version": "0.1.0",
+    "description": "API part of the test",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "nodemon --exec ./node_modules/@babel/node/bin/babel-node.js src/index",
+        "mongo-start": "docker run --name test-technique-thc --publish 27017:27017 -d mongo",
+        "mongo-stop": "docker stop test-technique-thc && docker rm test-technique-thc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "c3dr0x",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "1.19.0",
+        "cors": "2.8.5",
+        "dotenv": "8.2.0",
+        "express": "4.17.1",
+        "graphql": "15.3.0",
+        "helmet": "4.6.0",
+        "mongoose": "5.10.9",
+        "shortid": "2.2.16"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.11.6",
+        "@babel/core": "7.11.6",
+        "@babel/node": "7.10.5",
+        "@babel/preset-env": "7.11.5",
+        "eslint": "7.9.0",
+        "eslint-config-airbnb-base": "14.2.0",
+        "eslint-config-prettier": "6.12.0",
+        "eslint-plugin-import": "2.22.0",
+        "jest": "26.4.2",
+        "lint-staged": "10.4.0",
+        "nodemon": "2.0.4",
+        "prettier": "2.1.2",
+        "supertest": "5.0.0"
+    }
+}
