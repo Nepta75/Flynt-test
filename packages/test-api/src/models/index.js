@@ -1,2 +1,2 @@
-export { userModel, USER_ROLE_ENUM } from "./User";
-export { teamModel } from "./Team";
+export { UserModel, USER_ROLE_ENUM } from "./User";
+export { TeamModel } from "./Team";
