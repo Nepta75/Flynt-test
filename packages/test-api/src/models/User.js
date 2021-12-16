@@ -7,13 +7,23 @@ export const USER_ROLE_ENUM = {
 }
 
 const UserSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    password: String,
+    firstName: {
+        type: String,
+        required: [true, 'Champ requis']
+    },
+    lastName: {
+        type: String,
+        required: [true, 'Champ requis']
+    },
+    password: {
+        type: String,
+        required: [true, 'Champ requis']
+    },
     createdAt: { type: Date, default: Date.now },
     email: {
         type: String,
         unique: true,
+        required: [true, 'Champ requis']
     },
     role: {
         type: String,
@@ -22,4 +32,4 @@ const UserSchema = new Schema({
     },
 });
 
-export const userModel = model("User", UserSchema);
+export const UserModel = model("User", UserSchema);
