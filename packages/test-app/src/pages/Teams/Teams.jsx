@@ -3,28 +3,26 @@ import { Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from "react-router-dom";
+import { customFetch } from "../../utils/customFetch";
 
 export const Teams = () => {
   const [teams, setTeams] = useState([]);
   const navigate = useNavigate();
+  const userFetch = customFetch(`${process.env.REACT_APP_API_URL}/teams`)
   
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/teams`)
-      .then((res) => {
-        if (res.status !== 200) return null;
-        return res.json();
-      })
-      .then((teams) => {
-        setTeams(teams)
-      })
+    userFetch.get('', (err, res) => {
+      if (err) return null;
+      setTeams(res)
+
+    })
   }, []);
 
   const handleDeleteTeam = (teamId) => {
-    fetch(`${process.env.REACT_APP_API_URL}/teams/${teamId}`, { method: 'DELETE' })
-      .then((res) => {
-        if (res.status !== 200) return null;
-        setTeams(teams.filter(team => team._id !== teamId));
-      })
+    userFetch.del(teamId, (err, res) => {
+      if (err) return null;
+      setTeams(teams.filter(team => team._id !== teamId));
+    })
   }
   
   return (
