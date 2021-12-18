@@ -1,0 +1,9 @@
+const SQUAD_LEADER = 'SQUAD_LEADER';
+const SQUAD_MEMBER = 'SQUAD_MEMBER';
+const INTERN = 'INTERN';
+
+export const ROLES = ({
+  SQUAD_LEADER,
+  SQUAD_MEMBER,
+  INTERN
+})
