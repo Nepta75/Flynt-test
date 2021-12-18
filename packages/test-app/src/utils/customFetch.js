@@ -3,17 +3,23 @@ const HEADERS = { 'Content-Type': 'application/json' };
 export const customFetch = (url) => {
   const fetchAPI = async (method = 'GET', body = null, paramsUrl, callback) => {
     const newUrl = paramsUrl ? `${url}/${paramsUrl}` : url;
+    let err = null;
+    let result = null;
+    const callBackWithValues = (err, result) => callback(err, result)
+    
     const res = await fetch(newUrl, {
       method,
       headers: HEADERS,
       body: body ? JSON.stringify(body) : null
-    });
+    }).catch(() => err = { error: true, status: 500, message: "problème de connexion" });
 
-    const result = await res.json();
     const correctStatus = method === 'POST' ? 201 : 200;
-    let err = null;
-    if (res.status !== correctStatus) err = { error: true, status: res.status, message: result.message };
-    const callBackWithValues = (err, result) => callback(err, result)
+
+    if (!res?.error) {
+      result = await res.json().catch(() => err = { error: true, status: 500, message: "problème de connexion" });
+      if (res.status !== correctStatus) err = { error: true, status: res.status, message: result.message };
+    }
+
     callback && callBackWithValues(err, result);
   } 
 
