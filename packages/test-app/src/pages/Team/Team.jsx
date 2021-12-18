@@ -58,7 +58,7 @@ const Team = () => {
         ...inputValues.leadIds,
         ...inputValues.devIds,
         ...inputValues.internIds
-      ]
+      ].filter(id => id !== null)
     };
 
     teamFetch.update(body, teamId, (err, result) => {
@@ -83,7 +83,7 @@ const Team = () => {
         ...inputValues.leadIds,
         ...inputValues.devIds,
         ...inputValues.internIds
-      ]
+      ].filter(id => id !== null)
     };
 
     teamFetch.post(body, (err, result) => {

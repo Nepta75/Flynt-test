@@ -3,6 +3,7 @@ import { getAllTeam } from './getAllTeam';
 import { updateTeamById } from './updateTeamById'
 import { getTeamById } from './getTeamById';
 import { deleteTeamById } from './deleteTeamById';
+import { getManyTeamByUserId } from './getManyTeamByUserId'
 
 export {
   addTeam,
@@ -10,4 +11,5 @@ export {
   updateTeamById,
   getTeamById,
   deleteTeamById,
+  getManyTeamByUserId
 };
